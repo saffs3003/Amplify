@@ -1,15 +1,60 @@
 {
   "users": [
     {
-      "email": "user@example.com",
-      "password": "$2a$10$kkTg1PXLshHrzs7.eqd2Ge5tBZJvjxkVJvEP70OO4oBhyepUGDMQa",
+      "email": "maharjansaffi@gmail.com",
+      "password": "$2a$10$YZ1Bu.LK8/C9Feys/ZBK0uJ0Zkjj9fV4wlrSbiAec0hPd1tZ0Ur3O",
+      "name": "sss",
+      "gender": "demo",
+      "role": "demo",
       "id": 1
     },
     {
-      "email": "admin@example.com",
-      "password": "$2a$10$e./C9p232mlC6A3uWaLE5eFB//L9rjCHbGRwmp/aFC82pa7gBKzIO",
-      "role": "admin",
+      "email": "maharjansaffi22@gmail.com",
+      "password": "$2a$10$yxtDLzYuwEOaRUQG8Hz5yevhO4Nsm.z0Swn8M0Ets3kx6m60FhDF2",
+      "name": "sss",
+      "gender": "a",
+      "role": "demo",
       "id": 2
+    },
+    {
+      "email": "as@gmai.com",
+      "password": "$2a$10$1I3UMAmOLvHX.zfWesUZn.fiXyVMgiU7VXDw5SVuTA6ynWbc.302u",
+      "name": "saffiuser200",
+      "gender": "a",
+      "role": "a",
+      "id": 3
+    },
+    {
+      "email": "aswq@gmai.com",
+      "password": "$2a$10$gbDbtsLbpS4ikhkaMOBtS..LorXjPJrb9PIbquOstTgL0hlkfz9VG",
+      "name": "saffiuser200",
+      "gender": "demo",
+      "role": "demo",
+      "id": 4
+    },
+    {
+      "email": "qq@g.com",
+      "password": "$2a$10$C4fKhZRbClMvhGx5LhWPAujWOuYMnIR/vNG.4xtQ8c5b.M2I5Q5YC",
+      "name": "saffiuser200",
+      "gender": "demo",
+      "role": "demo",
+      "id": 5
+    },
+    {
+      "email": "user@example.com",
+      "password": "$2a$10$xVHqabrMnii7jRejGgEp7OhKsSCFXtxgYnzab36Mp6hr1gKE/MIFy",
+      "name": "saffiuser200",
+      "gender": "female",
+      "role": "thisrole",
+      "id": 6
+    },
+    {
+      "email": "qaq@g.com",
+      "password": "$2a$10$SANd2IKuWJeaygjRJ8xIPernoaEyl4A0EVmQYEYPmrBhDHddXwPlq",
+      "name": "saffiuser200",
+      "gender": "female",
+      "role": "newroke",
+      "id": 7
     }
   ]
 }

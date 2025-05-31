@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./app/assets/_sharedVariables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
