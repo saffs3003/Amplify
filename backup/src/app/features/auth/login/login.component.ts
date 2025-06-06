@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { Credentials } from '../../../core/services/auth.service';
+import { TokenStorageService } from '../../../core/services/token-storage.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -9,27 +12,50 @@ import { Credentials } from '../../../core/services/auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private tokenStore: TokenStorageService,
+    public router: Router
+  ) {}
   public loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
 
   public onLogin() {
-    const email = this.loginForm.get('email')?.value;
-    const password = this.loginForm.get('password')?.value;
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.controls;
 
-    if (!email || !password) {
-      // Handle error, maybe show message or stop submit
-      throw new Error('Email and password are required');
+      if (!email || !password) {
+        throw new Error('Email and password are required');
+      }
+      const loginCredentials: Credentials = {
+        email: email.value!,
+        password: password.value!,
+      };
+      // console.log(loginCredentials);
+      this.authService.login(loginCredentials).subscribe({
+        next: (res: any) => {
+          // debugger;
+
+          this.tokenStore.setToken(res.accessToken, res.user.role);
+
+          const role = res.user.role;
+          if (role === 'admin') {
+            console.log('logiing to admin');
+            this.router.navigate(['/admin-dashboard']);
+          } else if (role === 'user') {
+            console.log('logiing to user');
+            this.router.navigate(['/user/dashboard']);
+          } else {
+            this.router.navigate(['/']);
+            console.log('logiing tonobnenejnrwkh');
+          }
+        },
+        error: (err) => {
+          console.error('Registration failed:', err);
+        },
+      });
     }
-    const loginCredentials: Credentials = { email, password };
-    console.log(loginCredentials);
-    this.authService.login(loginCredentials).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: () => {},
-    });
   }
 }

@@ -1,0 +1,248 @@
+@import "../../../../assets/sharedVariables";
+
+* {
+  margin: 0;
+  padding: 0;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.277);
+}
+
+.Form {
+  height: fit-content;
+  min-width: 320px;
+  padding: clamp(20px, 1.2rem, 3em);
+  width: 100%;
+}
+.roleCover {
+  min-height: 400px;
+  height: inherit;
+  filter: grayscale(100%);
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+
+.roleButton {
+  min-height: 400px;
+  padding: 0;
+
+  &:focus {
+    .roleCover {
+      filter: grayscale(0%);
+    }
+  }
+}
+button {
+  background-color: rgb(61, 59, 59);
+  border-radius: 30px;
+  color: white;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formContainer div {
+  height: 100%;
+}
+
+.formContainer {
+  @include glassmorphism;
+  height: 80%;
+
+  width: 80%;
+  display: flex !important;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 20px;
+  min-width: 200px;
+
+  img {
+    object-fit: cover;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 0px 0px 20px;
+  }
+  form {
+    min-width: 300px;
+    height: 100%;
+    padding: 20px;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+input {
+  @include glassmorphism;
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+.roleSelector {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 800px;
+  min-width: 500px;
+  padding: 0;
+
+  .chooseRole {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    button {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: none;
+      padding: 12px;
+    }
+
+    .roleCover {
+      width: 100%;
+
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+}
+
+.controls {
+  position: relative;
+  bottom: 10%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.back {
+  position: absolute;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  padding: 4px mat-icon {
+    font-size: 1.2rem;
+  }
+}
+@keyframes StepperMoveLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes StepperMoveRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-10px);
+  }
+}
+
+.prevStep {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    animation: StepperMoveLeft 0.4s alternate infinite;
+  }
+}
+
+.nextStep {
+  position: relative;
+  display: inline-block;
+  &:hover {
+    animation: StepperMoveRight 0.4s alternate infinite;
+  }
+}
+.registerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+      217deg,
+      rgba(255, 0, 0, 0.8),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(127deg, rgba(116, 1, 152, 0.8), rgba(144, 0, 255, 0) 70.71%),
+    linear-gradient(336deg, rgba(2, 2, 127, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+.roleButtonLeft {
+  padding: 0;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.roleButtonRight {
+  padding: 0;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.registerContainer {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  overflow: hidden;
+}
+.registerForm {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 720px) {
+  .formContainer {
+    img {
+      display: none;
+    }
+  }
+
+  .registerForm {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .chooseRole {
+    width: 100%;
+
+    .roleCover {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .Form {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+}

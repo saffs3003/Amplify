@@ -25,45 +25,87 @@ export class RegisterComponent {
     private tokenStore: TokenStorageService,
     private router: Router
   ) {}
+
+  public NextStepTrack: number = 1;
+  animateStep = true;
+  private role: string = '';
+  public roles = [
+    {
+      name: 'Artist',
+      img: '../../../../assets/images/billie-eilish-tout.jpg',
+    },
+    {
+      name: 'User',
+      img: '../../../../assets/images/listening.jpg',
+    },
+  ];
+
+  public preferedGenre = [
+    { id: 1, name: 'Indie' },
+    { id: 2, name: 'PunkRock' },
+    { id: 3, name: 'Hip-Pop' },
+    { id: 4, name: 'Jazz' },
+    { id: 5, name: 'Classical' },
+  ];
   public registerForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     gender: new FormControl(''),
-    role: new FormControl('', [Validators.required]),
   });
-
-  public onRegister() {
-    const email = this.registerForm.get('email')?.value;
-    const password = this.registerForm.get('password')?.value;
-    const name = this.registerForm.get('name')?.value;
-    const gender = this.registerForm.get('gender')?.value;
-    const role = this.registerForm.get('role')?.value;
-
-    if (!email || !password || !name || !role || !gender) {
-      throw new Error('Email, password, name and role are required');
+  public setRole(selectedRole: string): void {
+    this.role = selectedRole;
+    if (this.NextStepTrack >= 1 && this.NextStepTrack < 3) {
+      this.NextStepTrack = this.NextStepTrack + 1;
+    } else {
+      this.NextStepTrack = 1;
     }
+  }
+  public onRegister() {
+    if (!this.registerForm.valid) {
+      throw new Error('Email, password, name and role are required');
+      return;
+    } else {
+      const { email, password, name, gender } = this.registerForm.controls;
 
-    const registerCredentials: RegisterUser = {
-      email,
-      password,
-      name,
-      gender,
-      role,
-    };
+      const registerCredentials: RegisterUser = {
+        email: email.value!,
+        password: password.value!,
+        name: name.value!,
+        gender: gender.value!,
+        role: this.role,
+      };
 
-    this.authService.register(registerCredentials).subscribe({
-      next: (res) => {
-        debugger;
-        console.log(
-          `this is res ${res.accessToken} :${res.user} role :${res.user.role}just this`
-        );
+      this.authService.register(registerCredentials).subscribe({
+        next: (res) => {
+          debugger;
+          console.log(
+            `this is res ${res.accessToken} :${res.user.role} role :${res.user}just this`
+          );
 
-        this.tokenStore.setToken(res.accessToken, res.user.role);
-      },
-      error: (err) => {
-        console.error('Registration failed:', err);
-      },
-    });
+          this.tokenStore.setToken(res.accessToken, res.user.role);
+
+          if (res.user.role == 'Admin') {
+            console.log('admin nav');
+            this.router.navigate(['/']);
+          } else if (res.user.role == 'User') {
+            console.log('user nav');
+            this.router.navigate(['/user/dashboard']);
+          }
+        },
+        error: (err) => {
+          console.error('Registration failed:', err);
+        },
+      });
+    }
+  }
+
+  public nextStep() {}
+  public prevStep() {
+    if (this.NextStepTrack > 1 && this.NextStepTrack < 2) {
+      this.NextStepTrack = this.NextStepTrack - 1;
+    } else {
+      this.NextStepTrack = 1;
+    }
   }
 }

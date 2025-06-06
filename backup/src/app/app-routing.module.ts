@@ -15,17 +15,17 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/user/user.module').then((m) => m.UserModule),
     // canActivate: [AuthGuard],
-    // canActivateChild: [RoleGuard],
-    data: { roles: ['user'] },
+    // // canActivateChild: [RoleGuard],
+    // data: { roles: ['User'] },
   },
-  // {
-  //   path: 'artist',
-  //   loadChildren: () =>
-  //     import('./features/artist/artist.module').then((m) => m.ArtistModule),
-  //   canActivate: [AuthGuard],
-  //   canActivateChild: [RoleGuard],
-  //   data: { role: 'artist' },
-  // },
+  {
+    path: 'artist',
+    loadChildren: () =>
+      import('./features/artist/artist.module').then((m) => m.ArtistModule),
+    // canActivate: [AuthGuard],
+    // canActivateChild: [RoleGuard],
+    // data: { role: 'artist' },
+  },
   // {
   //   path: 'admin',
   //   loadChildren: () =>

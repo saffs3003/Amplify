@@ -1,9 +1,21 @@
-<p>Login Form</p>
+<section class="loginContainer">
+  <section class="loginForm">
+    <div class="formContainer">
+      <div>
+        <img
+          src="../../../../assets/images/portrait-woman-posing-with-universe-projection-texture.jpg"
+          alt="login"
+        />
+      </div>
+      <form class="Form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <label for="email">Email</label>
+        <input id="email" type="text" formControlName="email" />
 
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email" />
-  <label for="password">password: </label>
-  <input id="password" type="text" formControlName="password" />
-  <button>submit</button>
-</form>
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" />
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+</section>

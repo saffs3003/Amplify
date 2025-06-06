@@ -1,0 +1,16 @@
+<section class="userLayout">
+  <app-navbar></app-navbar>
+
+  <div class="container">
+    <app-sidebar></app-sidebar>
+
+    <div
+      class="main-content"
+      #artistCard
+      (mouseenter)="onMouseMove($event)"
+      (mouseleave)="resetTilt()"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

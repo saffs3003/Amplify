@@ -1,18 +1,38 @@
-<p>register works!</p>
-<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email" />
-  <label for="password">password: </label>
-  <input id="password" type="text" formControlName="password" />
+<section class="registerContainer">
+  <section class="registerForm">
+    <div class="roleSelector" *ngIf="NextStepTrack == 1">
+      <div class="chooseRole" *ngFor="let role of roles">
+        <button type="button" class="roleButton" (click)="setRole(role.name)">
+          <img class="roleCover" src="{{ role.img }}" alt="{{ role.name }}" />
+          {{ role.name }}
+        </button>
+      </div>
+    </div>
+    <button class="back" (click)="prevStep()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="formContainer" *ngIf="NextStepTrack == 2">
+      <div>
+        <img
+          src="../../../../assets/images/portrait-woman-posing-with-universe-projection-texture.jpg"
+          alt=""
+          srcset=""
+        />
+      </div>
+      <form class="Form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <label for="email">Email: </label>
+        <input id="email" type="text" formControlName="email" />
+        <label for="password">password: </label>
+        <input id="password" type="text" formControlName="password" />
 
-  <label for="name">name: </label>
-  <input id="name" type="text" formControlName="name" />
+        <label for="name">name: </label>
+        <input id="name" type="text" formControlName="name" />
 
-  <label for="gender">gender: </label>
-  <input id="gender" type="text" formControlName="gender" />
+        <label for="gender">gender: </label>
+        <input id="gender" type="text" formControlName="gender" />
 
-  <label for="role">role: </label>
-  <input id="role" type="text" formControlName="role" />
-
-  <button>submit</button>
-</form>
+        <button>submit</button>
+      </form>
+    </div>
+  </section>
+</section>

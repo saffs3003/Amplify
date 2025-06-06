@@ -1,61 +1,79 @@
-@import "../../assets/_sharedVariables.scss";
+@import "../../../assets/sharedVariables";
+
 .hero {
-  color: aliceblue;
+  color: $color-white-soft;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+
+  margin: 0 auto;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: $gap-md;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: $padding-md;
+
+  button {
+    background: $color-white-translucent-medium;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    padding: $padding-sm 2rem;
+    font-weight: $font-weight-semibold;
+
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur($blur-frosted-small);
+
+    &:hover,
+    &:focus {
+      background: $color-white-translucent-strong;
+      box-shadow: $box-shadow-button-hover;
+      outline: none;
+    }
+  }
 }
 
 .hero-title {
   font-size: clamp(3rem, 8vw, 6rem);
-  text-align: center;
-  color: white;
   margin-bottom: 1rem;
   line-height: 1.1;
-  background: linear-gradient(135deg, #fff 0%, #e0e7ff 50%, #c7d2fe 100%);
-
+  font-weight: $font-weight-heavy;
   background-clip: text;
+  text-shadow: 0 0 5px $color-white-translucent-strong,
+    0 0 10px$color-shadow-dark;
 }
 
 .hero-subtitle {
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.9);
+  color: $color-text-subtitle;
   margin-bottom: 3rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+
   line-height: 1.6;
 }
+
 section {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: $padding-md;
 }
+
 h1 {
   font-size: $h1-font-size;
+  font-weight: $font-weight-bold;
+  color: $color-white-soft;
+  text-shadow: $text-shadow-heading;
 }
+
 p {
   font-size: $h2-font-size;
-  color: azure;
+  line-height: 1.5;
 }
-@keyframes glow {
-  from {
-    text-shadow: 0 0 2px #fff, 0 0 4px #1a73e8, 0 0 4px #0e6dcd;
-  }
-  to {
-    text-shadow: 0 0 4px #e6f0ff, 0 0 6px #1a73e8, 0 0 8px #4dabf7;
-  }
-}
-p,
-h1,
-h2,
-h3,
-h4 {
-  text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.797);
+button {
+  color: aliceblue;
 }

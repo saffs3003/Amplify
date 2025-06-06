@@ -1,0 +1,24 @@
+<section>
+  <p>dashboard of admin works!</p>
+  <section>
+    <div
+      [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')' }"
+      class="ArtistCoverImage"
+    >
+      <div class="ArtistInfo">
+        <p class="artistTitle">Artist</p>
+
+        <h3 class="artistName">Billie Eillish</h3>
+        <p class="artistSongs">20+ songs</p>
+      </div>
+    </div>
+
+    <div class="TopSongs">
+      <h3>Top Songs</h3>
+      <app-horizontal-music-card></app-horizontal-music-card>
+    </div>
+
+    <div class="upcommingEvents"></div>
+  </section>
+  <app-music-player></app-music-player>
+</section>

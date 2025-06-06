@@ -1,0 +1,18 @@
+<p>horizontal-music-card works!</p>
+<div class="Card">
+  <div class="Song">
+    <img src="../../../assets/images/billie-eilish-tout.jpg" alt="" />
+    <div class="SongInfo">
+      <p class="SongName">Birds of a Feather</p>
+      <p class="ArtistName">Billie Eillish</p>
+    </div>
+  </div>
+  <div class="audioControls">
+    <button type="button" (click)="toggleFavorite()">
+      <mat-icon [class.favorite-active]="isFavorite">favorite</mat-icon>
+    </button>
+    <button type="button" class="volume-btn">
+      <mat-icon>volume_up</mat-icon>
+    </button>
+  </div>
+</div>

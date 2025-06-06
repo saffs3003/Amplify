@@ -24,7 +24,7 @@ export interface RegisterResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiurl = 'http://localhost:3000';
+  private apiurl = 'http://localhost:3000/api';
   constructor(
     private http: HttpClient,
     private tokenStore: TokenStorageService,

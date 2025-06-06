@@ -2,9 +2,9 @@ POST http://localhost:3000/api/register
 Content-Type: application/json
 
 {
-    "email": "saffi2@gmail.com", 
+    "email": "saffi22@gmail.com", 
     "password": "123",
-    "role": "admin"
+    "role": "user"
 }
 
 ###
@@ -13,11 +13,13 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6Im
 ###
 POST http://localhost:3000/api/login
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDkwNTI5NzksImV4cCI6MTc0OTA1NjU3OX0.3Co_swyIIU_6j9hnEDBEzu1WPe8d_ckxmy8NM6L9ZCs
 
 {
-  "email": "saffi2@gmail.com", 
-    "password": "123"
+  "email": "saffi2@gmail.com",
+  "password": "123"
 }
+
 
 ###
 GET http://localhost:3000/api/users

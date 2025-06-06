@@ -1,1 +1,24 @@
 <p>dashboard works!</p>
+<div class="popularSongs w-100 mb-3">
+  <h3>Popular Songs</h3>
+  <div class="songContainer">
+    <div class="songContainer mt-1" *ngFor="let song of songs">
+      <app-song-card
+        [songTitle]="song.name"
+        [songArtist]="song.artist"
+        [songImg]="song.img"
+      ></app-song-card>
+    </div>
+  </div>
+</div>
+<div class="popularArtist w-100 mt-1">
+  <h3>Popular Artists</h3>
+  <div class="artistContainer">
+    <div class="songContainer" *ngFor="let artist of artists">
+      <app-artist-card
+        [artistImg]="artist.img"
+        [artistName]="artist.name"
+      ></app-artist-card>
+    </div>
+  </div>
+</div>
