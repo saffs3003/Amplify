@@ -1,0 +1,25 @@
+<section>
+  <mat-dialog-content class="mat-typography">
+    <div class="modalHeader">
+      <h3>Add New Songs</h3>
+      <button class="closeModalBtn" matButton mat-dialog-close>
+        <mat-icon> close</mat-icon>
+      </button>
+    </div>
+
+    <form>
+      <label for="">Song Name </label>
+      <input type="text" name="" id="" />
+      <label for=""> Genre</label>
+      <input type="text" name="" id="" />
+      <label for="">Album Cover</label>
+      <input type="file" accept="image/*" name="" id="" />
+
+      <label for="">Song FIle</label>
+      <input type="file" name="" id="" accept="audio/*" />
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button matButton [mat-dialog-close]="true" cdkFocusInitial>Add</button>
+  </mat-dialog-actions>
+</section>

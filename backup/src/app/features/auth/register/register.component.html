@@ -22,15 +22,17 @@
       <form class="Form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <label for="email">Email: </label>
         <input id="email" type="text" formControlName="email" />
-        <label for="password">password: </label>
-        <input id="password" type="text" formControlName="password" />
+        <label for="password">Password: </label>
+        <input id="password" type="password" formControlName="password" />
 
-        <label for="name">name: </label>
+        <label for="name">Name: </label>
         <input id="name" type="text" formControlName="name" />
 
-        <label for="gender">gender: </label>
-        <input id="gender" type="text" formControlName="gender" />
-
+        <label for="gender">Gender: </label>
+        <select name="gender" id="gender">
+          <option value="female">female</option>
+          <option value="male">male</option>
+        </select>
         <button>submit</button>
       </form>
     </div>

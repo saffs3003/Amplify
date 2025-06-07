@@ -1,7 +1,7 @@
 <section class="sidebar">
   <nav>
     <ul>
-      <div class="linkContainer" *ngFor="let alink of sidenavLinks">
+      <div class="linkContainer" *ngFor="let alink of routes">
         <li class="linksList">
           <a
             [routerLink]="alink.route"
@@ -19,7 +19,7 @@
 
 <nav class="mobile-navbar">
   <ul class="mobile-nav-list">
-    <li *ngFor="let alink of sidenavLinks" class="mobile-nav-item">
+    <li *ngFor="let alink of routes" class="mobile-nav-item">
       <a
         [routerLink]="alink.route"
         routerLinkActive="active"

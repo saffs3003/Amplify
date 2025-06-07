@@ -1,5 +1,6 @@
 // music-player.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AudioSyncService } from '../../core/services/audio-sync.service';
 
 interface Song {
   title: string;
@@ -15,6 +16,7 @@ interface Song {
   styleUrl: './music-player.component.scss',
 })
 export class MusicPlayerComponent implements OnInit, OnDestroy {
+  constructor(private audioService: AudioSyncService) {}
   audio!: HTMLAudioElement;
   isPlaying = false;
   currentTime = 0;
@@ -44,6 +46,7 @@ export class MusicPlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.audio = new Audio();
+    this.audioService.setAudioElement(this.audio);
     this.loadCurrentSong();
     this.setupAudioEventListeners();
   }

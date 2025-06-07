@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { AddSongComponent } from '../add-song/add-song.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,4 +22,14 @@ export class DashboardComponent {
   ];
 
   public imageUrl = '../../../../assets/images/billie-eilish-tout.jpg';
+
+  readonly dialog = inject(MatDialog);
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddSongComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

@@ -1,6 +1,10 @@
 <p>music-library works!</p>
 <div class="container" #container>
   <canvas #canvas></canvas>
-  <audio controls #audio src="assets/audio/interstellar.mp3"></audio>
+  <div>
+    <input type="range" name="" id="" [value]="currentTime" [max]="songTime" />
+
+    {{ songTime }}-->{{ currentTime }}
+  </div>
 </div>
 <app-playlist></app-playlist>

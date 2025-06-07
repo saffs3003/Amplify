@@ -8,10 +8,11 @@
       <p class="artistSongs">20+ songs</p>
     </div>
   </div>
-
-  <div class="TopSongs">
-    <h3>Top Playlist</h3>
-    <app-horizontal-music-card></app-horizontal-music-card>
+  <h3>Top Playlist</h3>
+  <div class="TopSongs" class="musicList">
+    <div *ngFor="let musicCard of musicCards">
+      <app-horizontal-music-card></app-horizontal-music-card>
+    </div>
   </div>
 
   <div class="upcommingEvents"></div>

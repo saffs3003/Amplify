@@ -21,6 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 
 .formContainer {
@@ -51,7 +52,7 @@
 
     label {
       font-weight: 500;
-      color: white;
+      color: black;
     }
 
     input {
@@ -60,6 +61,11 @@
       padding: 0.6rem 1rem;
       border: none;
       outline: none;
+
+      &:focus {
+        transform: scale(1.05);
+        transition: transform 0.2s ease-in-out;
+      }
     }
 
     button {

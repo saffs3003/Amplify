@@ -2,7 +2,12 @@
   <app-navbar></app-navbar>
 
   <div class="container">
-    <app-sidebar></app-sidebar>
+    <app-sidebar
+      [routes]="[
+        { route: 'dashboard', icon: 'home', linkText: 'Home' },
+        { route: 'songs', icon: 'music_note', linkText: 'Songs' }
+      ]"
+    ></app-sidebar>
 
     <div
       class="main-content"

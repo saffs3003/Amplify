@@ -14,3 +14,25 @@
 
   min-width: 400px;
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// app-music-player {
+//   position: fixed;
+//   bottom: 4px;
+//   width: 80%;
+//   align-self: center;
+// }
+.AddSongs {
+  align-self: center;
+  button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px;
+  }
+}

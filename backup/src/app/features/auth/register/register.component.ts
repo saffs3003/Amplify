@@ -83,11 +83,12 @@ export class RegisterComponent {
             `this is res ${res.accessToken} :${res.user.role} role :${res.user}just this`
           );
 
-          this.tokenStore.setToken(res.accessToken, res.user.role);
+          this.tokenStore.setToken(res.accessToken, res.user, res.user.role);
 
-          if (res.user.role == 'Admin') {
-            console.log('admin nav');
-            this.router.navigate(['/']);
+          if (res.user.role == 'Artist') {
+            debugger;
+            console.log('Artist nav');
+            this.router.navigate(['/artist/dasboard']);
           } else if (res.user.role == 'User') {
             console.log('user nav');
             this.router.navigate(['/user/dashboard']);

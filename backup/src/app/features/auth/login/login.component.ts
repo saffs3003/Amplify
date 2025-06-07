@@ -36,10 +36,10 @@ export class LoginComponent {
       // console.log(loginCredentials);
       this.authService.login(loginCredentials).subscribe({
         next: (res: any) => {
-          // debugger;
+          debugger;
 
-          this.tokenStore.setToken(res.accessToken, res.user.role);
-
+          this.tokenStore.setToken(res.accessToken, res.user, res.user.role);
+          console.log(res.user.role);
           const role = res.user.role;
           if (role === 'admin') {
             console.log('logiing to admin');

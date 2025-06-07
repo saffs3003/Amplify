@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { AudioSyncService } from '../../../core/services/audio-sync.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-music-library',
   standalone: false,
@@ -9,7 +10,6 @@ import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 })
 export class MusicLibraryComponent implements AfterViewInit {
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('audio') audioRef!: ElementRef<HTMLAudioElement>;
   @ViewChild('container') containerRef!: ElementRef<HTMLDivElement>;
 
   private ctx!: CanvasRenderingContext2D;
@@ -17,30 +17,56 @@ export class MusicLibraryComponent implements AfterViewInit {
   private analyser!: AnalyserNode;
   private dataArray!: Uint8Array;
   private bars: any[] = [];
-
+  public currentTimeSub!: Subscription;
+  private durationSub!: Subscription;
+  constructor(
+    private audioService: AudioSyncService,
+    private cdr: ChangeDetectorRef
+  ) {}
+  public songTime: number = 0;
+  public currentTime: number = 0;
   ngAfterViewInit(): void {
-    const canvas = this.canvasRef.nativeElement;
-    const audio = this.audioRef.nativeElement;
-    const container = this.containerRef.nativeElement;
+    this.durationSub = this.audioService.songDuration$.subscribe((duration) => {
+      this.songTime = duration;
 
+      this.cdr.detectChanges();
+    });
+
+    this.currentTimeSub = this.audioService.currentTimeSubject$.subscribe(
+      (currentTime) => {
+        this.currentTime = currentTime;
+
+        this.cdr.detectChanges();
+      }
+    );
+
+    const canvas = this.canvasRef.nativeElement;
+    const container = this.containerRef.nativeElement;
+    this.songTime = this.audioService.songTime();
+    console.log(`this is ${this.songTime}`);
     const resizeCanvas = () => {
       canvas.width = canvas.clientWidth;
       canvas.height = canvas.clientHeight;
     };
-    //for canvas responsiveness
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
     this.ctx = canvas.getContext('2d')!;
+    const audio = this.audioService.audio;
+
+    if (!audio) {
+      console.error('No audio element found in AudioSyncService');
+      return;
+    }
 
     this.audioContext = new (window.AudioContext ||
       (window as any).webkitAudioContext)();
     const audioSource = this.audioContext.createMediaElementSource(audio);
     this.analyser = this.audioContext.createAnalyser();
     this.analyser.fftSize = 512;
-
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+
     audioSource.connect(this.analyser);
     this.analyser.connect(this.audioContext.destination);
 
@@ -62,11 +88,7 @@ export class MusicLibraryComponent implements AfterViewInit {
 
       update(musicNodeValue: number) {
         const sound = musicNodeValue * 400;
-        if (sound > this.height) {
-          this.height = sound;
-        } else {
-          this.height -= this.height * 0.03;
-        }
+        this.height = sound > this.height ? sound : this.height * 0.97;
       }
 
       draw(context: CanvasRenderingContext2D) {
@@ -75,7 +97,6 @@ export class MusicLibraryComponent implements AfterViewInit {
         context.save();
         context.translate(this.index, 0);
         context.fillStyle = this.color;
-
         context.fillRect(this.x, this.y + 10, this.width, -this.height);
         context.stroke();
         context.restore();
@@ -90,30 +111,16 @@ export class MusicLibraryComponent implements AfterViewInit {
   }
 
   private animate = () => {
-    this.ctx.clearRect(
-      0,
-      0,
-      this.canvasRef.nativeElement.width,
-      this.canvasRef.nativeElement.height
-    );
+    const canvas = this.canvasRef.nativeElement;
+    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
     this.analyser.getByteTimeDomainData(this.dataArray);
     const normSamples = [...this.dataArray].map((e) => e / 128 - 1);
 
-    let sum = 0;
-    for (let i = 0; i <= normSamples.length; i++) {
-      sum = sum + normSamples[i] * normSamples[i];
-    }
-
-    const volume = Math.sqrt(sum / normSamples.length);
-
     this.ctx.save();
-    this.ctx.translate(
-      this.canvasRef.nativeElement.width / 5,
-      this.canvasRef.nativeElement.height / 2
-    );
+    this.ctx.translate(canvas.width / 5, canvas.height / 2);
 
     this.bars.forEach((bar, i) => {
-      bar.update(normSamples[i]);
+      bar.update(normSamples[i] || 0);
       bar.draw(this.ctx);
     });
 

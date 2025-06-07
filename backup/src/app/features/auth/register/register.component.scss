@@ -76,6 +76,10 @@ input {
   @include glassmorphism;
   border-radius: 20px;
   padding: 6px 12px;
+  &:focus {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
 }
 .roleSelector {
   width: 100%;
