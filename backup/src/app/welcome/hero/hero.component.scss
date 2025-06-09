@@ -1,4 +1,6 @@
-@import "../../../assets/sharedVariables";
+@import '../../../assets/sharedVariables';
+@import '../../../assets/sharedMixins';
+@import '../../../assets/sharedButtons';
 
 .hero {
   color: $color-white-soft;
@@ -25,7 +27,9 @@
     font-weight: $font-weight-semibold;
 
     cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease;
     backdrop-filter: blur($blur-frosted-small);
 
     &:hover,
@@ -43,7 +47,8 @@
   line-height: 1.1;
   font-weight: $font-weight-heavy;
   background-clip: text;
-  text-shadow: 0 0 5px $color-white-translucent-strong,
+  text-shadow:
+    0 0 5px $color-white-translucent-strong,
     0 0 10px$color-shadow-dark;
 }
 

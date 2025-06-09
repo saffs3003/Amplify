@@ -8,9 +8,8 @@ describe('EqualizerCanvasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EqualizerCanvasComponent]
-    })
-    .compileComponents();
+      declarations: [EqualizerCanvasComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EqualizerCanvasComponent);
     component = fixture.componentInstance;

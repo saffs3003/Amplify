@@ -38,15 +38,18 @@ export class LoginComponent {
         next: (res: any) => {
           debugger;
 
-          this.tokenStore.setToken(res.accessToken, res.user, res.user.role);
+          this.tokenStore.setToken(res.accessToken, res.user.role, res.user);
           console.log(res.user.role);
           const role = res.user.role;
-          if (role === 'admin') {
+          if (role === 'Admin') {
             console.log('logiing to admin');
             this.router.navigate(['/admin-dashboard']);
-          } else if (role === 'user') {
+          } else if (role === 'User') {
             console.log('logiing to user');
             this.router.navigate(['/user/dashboard']);
+          } else if (role === 'Artist') {
+            console.log('logiing to user');
+            this.router.navigate(['/artist/dashboard']);
           } else {
             this.router.navigate(['/']);
             console.log('logiing tonobnenejnrwkh');

@@ -1,0 +1,46 @@
+@import '../../../../assets/sharedMixins';
+@import '../../../../assets/sharedVariables';
+
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table .table {
+  @include glassmorphism;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+img {
+  width: 120px;
+  height: auto;
+}
+
+audio {
+  min-width: 120px;
+}
+button {
+  padding: 6px;
+}
+
+@media (max-width: 720px) {
+  .audio-wrapper {
+    width: 50px;
+    overflow: hidden;
+  }
+  button {
+    padding: 4px;
+  }
+  img {
+    width: 100%;
+  }
+}

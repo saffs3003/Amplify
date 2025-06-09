@@ -7,19 +7,19 @@
       </button>
     </div>
 
-    <form>
+    <form (submit)="getSongInfo()" [formGroup]="songsForm">
       <label for="">Song Name </label>
-      <input type="text" name="" id="" />
+      <input formControlName="title" type="text" name="" id="" />
       <label for=""> Genre</label>
-      <input type="text" name="" id="" />
+      <input type="text" formControlName="genre" name="" id="" />
       <label for="">Album Cover</label>
-      <input type="file" accept="image/*" name="" id="" />
+      <input type="file" (change)="onCoverArtSelected($event)" accept="image/*" name="" id="" />
 
       <label for="">Song FIle</label>
-      <input type="file" name="" id="" accept="audio/*" />
+      <input type="file" (change)="onAudioSelected($event)" name="" id="" accept="audio/*" />
+
+      <button type="submit" matButton [mat-dialog-close]="true" cdkFocusInitial>Add</button>
     </form>
   </mat-dialog-content>
-  <mat-dialog-actions>
-    <button matButton [mat-dialog-close]="true" cdkFocusInitial>Add</button>
-  </mat-dialog-actions>
+  <mat-dialog-actions> </mat-dialog-actions>
 </section>

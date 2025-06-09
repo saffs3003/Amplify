@@ -7,33 +7,29 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },
   {
     path: 'auth',
-    loadChildren: () =>
-      import('./features/auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'user',
-    loadChildren: () =>
-      import('./features/user/user.module').then((m) => m.UserModule),
+    loadChildren: () => import('./features/user/user.module').then((m) => m.UserModule),
     // canActivate: [AuthGuard],
-    // // canActivateChild: [RoleGuard],
+    // canActivateChild: [RoleGuard],
     // data: { roles: ['User'] },
   },
   {
     path: 'artist',
-    loadChildren: () =>
-      import('./features/artist/artist.module').then((m) => m.ArtistModule),
+    loadChildren: () => import('./features/artist/artist.module').then((m) => m.ArtistModule),
     // canActivate: [AuthGuard],
     // canActivateChild: [RoleGuard],
-    // data: { role: 'artist' },
+    // data: { roles: ['Artist'] },
   },
-  // {
-  //   path: 'admin',
-  //   loadChildren: () =>
-  //     import('./features/admin/admin.module').then((m) => m.AdminModule),
-  //   canActivate: [AuthGuard],
-  //   canActivateChild: [RoleGuard],
-  //   data: { role: 'admin' },
-  // },
+  {
+    path: 'admin',
+    loadChildren: () => import('./features/admin/admin.module').then((m) => m.AdminModule),
+    //   canActivate: [AuthGuard],
+    //   canActivateChild: [RoleGuard],
+    //   data: { role: 'admin' },
+  },
   { path: '**', redirectTo: '' },
 ];
 

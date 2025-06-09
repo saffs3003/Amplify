@@ -27,6 +27,7 @@ export class RegisterComponent {
   ) {}
 
   public NextStepTrack: number = 1;
+
   animateStep = true;
   private role: string = '';
   public roles = [
@@ -83,12 +84,12 @@ export class RegisterComponent {
             `this is res ${res.accessToken} :${res.user.role} role :${res.user}just this`
           );
 
-          this.tokenStore.setToken(res.accessToken, res.user, res.user.role);
+          this.tokenStore.setToken(res.accessToken, res.user.role, res.user);
 
           if (res.user.role == 'Artist') {
             debugger;
             console.log('Artist nav');
-            this.router.navigate(['/artist/dasboard']);
+            this.router.navigate(['/artist/dashboard']);
           } else if (res.user.role == 'User') {
             console.log('user nav');
             this.router.navigate(['/user/dashboard']);

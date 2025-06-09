@@ -11,9 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { AddSongComponent } from './add-song/add-song.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
-  declarations: [ArtistComponent, DashboardComponent, EventsComponent, AddSongComponent],
+  declarations: [ArtistComponent, DashboardComponent, EventsComponent, AddSongComponent, AddEventComponent],
   imports: [
     CommonModule,
     ArtistRoutingModule,
@@ -22,6 +24,7 @@ import { AddSongComponent } from './add-song/add-song.component';
     MatButtonModule,
     MatDialogModule,
     MatIcon,
+    ReactiveFormsModule,
   ],
   exports: [MatButtonModule, MatDialogModule],
 })

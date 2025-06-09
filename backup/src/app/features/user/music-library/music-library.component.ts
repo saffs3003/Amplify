@@ -32,13 +32,11 @@ export class MusicLibraryComponent implements AfterViewInit {
       this.cdr.detectChanges();
     });
 
-    this.currentTimeSub = this.audioService.currentTimeSubject$.subscribe(
-      (currentTime) => {
-        this.currentTime = currentTime;
+    this.currentTimeSub = this.audioService.currentTimeSubject$.subscribe((currentTime) => {
+      this.currentTime = currentTime;
 
-        this.cdr.detectChanges();
-      }
-    );
+      this.cdr.detectChanges();
+    });
 
     const canvas = this.canvasRef.nativeElement;
     const container = this.containerRef.nativeElement;
@@ -60,8 +58,7 @@ export class MusicLibraryComponent implements AfterViewInit {
       return;
     }
 
-    this.audioContext = new (window.AudioContext ||
-      (window as any).webkitAudioContext)();
+    this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     const audioSource = this.audioContext.createMediaElementSource(audio);
     this.analyser = this.audioContext.createAnalyser();
     this.analyser.fftSize = 512;

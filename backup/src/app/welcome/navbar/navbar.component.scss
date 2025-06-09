@@ -1,16 +1,13 @@
-@import "../../../assets/sharedVariables";
+@import '../../../assets/sharedVariables';
+@import '../../../assets/sharedMixins';
+@import '../../../assets/sharedButtons';
 
 #glass.navbar {
-  @include glassmorphism(
-    $background-color: rgba(255, 255, 255, 0.05),
-    $blur-radius: 20px,
-    $border: 1px solid rgba(255, 255, 255, 0.545),
-    $box-shadow: 0 16px 30px rgba(0, 0, 0, 0.277)
-  );
-  color: white;
+  @include glassmorphism();
+  color: $white;
   .nav-link {
-    color: white;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.693);
+    color: $white;
+    text-shadow: 2px 2px 3px $color-shadow-dark;
   }
 
   .nav-link:hover,
@@ -18,18 +15,18 @@
   .nav-link.active {
     transition: transform 0.3s ease-in-out;
     transform: scale(1.14);
-    text-shadow: 1px 1px 2px rgba(251, 251, 251, 0.342);
+    text-shadow: 1px 1px 2px $color-shadow-glow-blue-strong;
   }
 }
 
 .nav-item:hover::after {
   position: absolute;
-  content: "";
+  content: '';
   width: 50px;
   height: 2px;
-  background-color: white;
-  color: rgba(84, 15, 123, 0.7);
-  border: 1px solid rgba(251, 251, 251, 0.408);
+  background-color: $white;
+  color: $primary;
+  border: 1px solid $color-shadow-glow-blue-strong;
   border-radius: 4px;
   top: 50px;
   animation: width 1s alternate;
@@ -55,8 +52,8 @@
   gap: 2px;
 }
 .navbar-brand {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: $h2-font-size;
+  font-weight: $font-weight-semibold;
   color: $white;
   letter-spacing: 0.4px;
   opacity: 0.9;
@@ -69,7 +66,4 @@
 .navbar-toggler {
   font-size: small;
   padding: clamp(10px, 0.5rem, 1.2rem);
-}
-.navbarContainer:hover {
-  transform: scale(1.02);
 }

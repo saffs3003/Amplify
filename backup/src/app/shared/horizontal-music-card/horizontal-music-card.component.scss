@@ -1,4 +1,6 @@
-@import "../../../assets/_sharedVariables.scss";
+@import '../../../assets/sharedVariables';
+@import '../../../assets/sharedMixins';
+@import '../../../assets/sharedButtons';
 
 .Card {
   @include glassmorphism(

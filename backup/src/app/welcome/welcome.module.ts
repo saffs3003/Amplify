@@ -9,12 +9,7 @@ import { FeatureComponent } from './feature/feature.component';
 import { MatIcon } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    HeroComponent,
-    HeroNavbarComponent,
-    WelcomeComponent,
-    FeatureComponent,
-  ],
+  declarations: [HeroComponent, HeroNavbarComponent, WelcomeComponent, FeatureComponent],
   imports: [CommonModule, BrowserModule, AppRoutingModule, MatIcon],
 })
 export class WelcomeModule {}

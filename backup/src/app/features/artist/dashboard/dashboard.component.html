@@ -1,10 +1,7 @@
 <section>
   <!-- <p>dashboard of admin works!</p> -->
 
-  <div
-    [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')' }"
-    class="ArtistCoverImage"
-  >
+  <div [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')' }" class="ArtistCoverImage">
     <div class="ArtistInfo">
       <p class="artistTitle">Artist</p>
 
@@ -13,9 +10,13 @@
     </div>
   </div>
   <div class="AddSongs">
-    <button matButton (click)="openDialog()">
+    <button class="btn button-light" matButton (click)="openDialog()">
       Add Songs
       <mat-icon>add </mat-icon>
+    </button>
+    <button class="btn button-light" matButton (click)="openDialog()">
+      Add Event
+      <mat-icon>confirmation_number </mat-icon>
     </button>
   </div>
   <div class="TopSongs">

@@ -21,12 +21,6 @@ import { MatIconModule } from '@angular/material/icon';
     BookingsComponent,
     ProfileComponent,
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    SharedModule,
-    SidebarModule,
-    MatIconModule,
-  ],
+  imports: [CommonModule, UserRoutingModule, SharedModule, SidebarModule, MatIconModule],
 })
 export class UserModule {}

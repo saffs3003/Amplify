@@ -1,9 +1,4 @@
-<div
-  class="musicCard"
-  (mousemove)="onMouseMove($event)"
-  (mouseleave)="resetTilt()"
-  #musicCard
->
+<div class="musicCard" (mousemove)="onMouseMove($event)" (mouseleave)="resetTilt()" #musicCard>
   <img [src]="song.image" alt="album cover" class="albumCover" />
 
   <div class="songInfo">

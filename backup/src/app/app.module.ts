@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { WelcomeModule } from './welcome/welcome.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { AdminComponent } from './features/admin/admin.component';
 
 @NgModule({
   declarations: [AppComponent],

@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-events',
   standalone: false,
   templateUrl: './events.component.html',
-  styleUrl: './events.component.scss'
+  styleUrl: './events.component.scss',
 })
-export class EventsComponent {
-
-}
+export class EventsComponent {}

@@ -10,12 +10,11 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'dashboard', component: DashboardComponent },
-
-      { path: 'profile', component: ProfileComponent },
-      { path: 'mybookings', component: BookingsComponent },
-      { path: 'songs', component: MusicLibraryComponent },
+      { path: '', component: DashboardComponent, data: { roles: ['User'] } },
+      { path: 'dashboard', component: DashboardComponent, data: { roles: ['User'] } },
+      { path: 'profile', component: ProfileComponent, data: { roles: ['User'] } },
+      { path: 'mybookings', component: BookingsComponent, data: { roles: ['User'] } },
+      { path: 'songs', component: MusicLibraryComponent, data: { roles: ['User'] } },
     ],
   },
 ];

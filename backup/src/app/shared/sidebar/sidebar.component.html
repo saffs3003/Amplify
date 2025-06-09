@@ -3,11 +3,7 @@
     <ul>
       <div class="linkContainer" *ngFor="let alink of routes">
         <li class="linksList">
-          <a
-            [routerLink]="alink.route"
-            routerLinkActive="active"
-            class="sideLinks"
-          >
+          <a [routerLink]="alink.route" routerLinkActive="active" class="sideLinks">
             <mat-icon>{{ alink.icon }}</mat-icon>
             <span id="linkText">{{ alink.linkText }}</span>
           </a>
@@ -20,11 +16,7 @@
 <nav class="mobile-navbar">
   <ul class="mobile-nav-list">
     <li *ngFor="let alink of routes" class="mobile-nav-item">
-      <a
-        [routerLink]="alink.route"
-        routerLinkActive="active"
-        class="mobile-nav-link"
-      >
+      <a [routerLink]="alink.route" routerLinkActive="active" class="mobile-nav-link">
         <mat-icon>{{ alink.icon }}</mat-icon>
       </a>
     </li>

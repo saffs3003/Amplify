@@ -5,17 +5,28 @@ export interface song {
   title: string;
 
   genre: string;
-  cover_art: string;
-  audio_path: string;
-  artist_id: string;
-  is_approved: boolean;
+  coverArt: string;
+  audioPath: string;
+  artistId: string;
+  isApproved: boolean;
 }
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  private apiUrl = 'http://localhost:3000/api';
+
   constructor(private http: HttpClient) {}
-  public addSongs(song: song) {
-    return this.http.post('api/add-song', song);
+  public addSongs(song: any) {
+    console.log('song added');
+    return this.http.post(`${this.apiUrl}/add-songs`, song);
+  }
+
+  getUnapprovedSongs() {
+    return this.http.get<any[]>(`${this.apiUrl}/unapproved-songs`);
+  }
+
+  approveSong(songId: number) {
+    return this.http.post(`${this.apiUrl}/approve-song/${songId}`, {});
   }
 }

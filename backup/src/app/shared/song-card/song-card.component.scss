@@ -1,4 +1,6 @@
-@import "../../../assets/sharedVariables";
+@import '../../../assets/sharedVariables';
+@import '../../../assets/sharedMixins';
+@import '../../../assets/sharedButtons';
 * {
   color: white;
   transition: all 0.2s ease-in-out;

@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { AddSongComponent } from '../add-song/add-song.component';
+import { AddEventComponent } from '../add-event/add-event.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,6 +28,13 @@ export class DashboardComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddSongComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openEventDialog() {
+    const dialogRef = this.dialog.open(AddEventComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

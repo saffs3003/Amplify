@@ -104,9 +104,7 @@ export class MusicPlayerComponent implements OnInit, OnDestroy {
 
   previousSong() {
     this.currentSongIndex =
-      this.currentSongIndex > 0
-        ? this.currentSongIndex - 1
-        : this.playlist.length - 1;
+      this.currentSongIndex > 0 ? this.currentSongIndex - 1 : this.playlist.length - 1;
     this.loadCurrentSong();
     if (this.isPlaying) {
       this.play();
@@ -115,9 +113,7 @@ export class MusicPlayerComponent implements OnInit, OnDestroy {
 
   nextSong() {
     this.currentSongIndex =
-      this.currentSongIndex < this.playlist.length - 1
-        ? this.currentSongIndex + 1
-        : 0;
+      this.currentSongIndex < this.playlist.length - 1 ? this.currentSongIndex + 1 : 0;
     this.loadCurrentSong();
     if (this.isPlaying) {
       this.play();

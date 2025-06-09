@@ -4,8 +4,8 @@ import { CanActivateChildFn } from '@angular/router';
 import { roleGuard } from './role.guard';
 
 describe('roleGuard', () => {
-  const executeGuard: CanActivateChildFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => roleGuard(...guardParameters));
+  const executeGuard: CanActivateChildFn = (...guardParameters) =>
+    TestBed.runInInjectionContext(() => roleGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

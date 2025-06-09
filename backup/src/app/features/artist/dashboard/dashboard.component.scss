@@ -1,3 +1,7 @@
+@import '../../../../assets/sharedButtons';
+@import '../../../../assets/sharedMixins';
+@import '../../../../assets/sharedVariables';
+
 .ArtistCoverImage {
   display: fixed;
   top: 0%;
@@ -29,10 +33,4 @@ section {
 // }
 .AddSongs {
   align-self: center;
-  button {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 12px;
-  }
 }

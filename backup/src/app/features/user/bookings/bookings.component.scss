@@ -1,3 +1,6 @@
+@import '../../../../assets/sharedVariables';
+@import '../../../../assets/sharedMixins';
+@import '../../../../assets/sharedButtons';
 .concertTicket {
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #fff;
@@ -5,7 +8,7 @@
   width: 400px;
   padding: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  font-family: "Arial Rounded MT Bold", sans-serif;
+  font-family: 'Arial Rounded MT Bold', sans-serif;
   overflow: hidden;
   position: relative;
   margin-bottom: 20px;

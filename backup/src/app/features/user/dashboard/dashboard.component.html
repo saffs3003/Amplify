@@ -15,10 +15,7 @@
   <h3>Popular Artists</h3>
   <div class="artistContainer">
     <div class="songContainer" *ngFor="let artist of artists">
-      <app-artist-card
-        [artistImg]="artist.img"
-        [artistName]="artist.name"
-      ></app-artist-card>
+      <app-artist-card [artistImg]="artist.img" [artistName]="artist.name"></app-artist-card>
     </div>
   </div>
 </div>

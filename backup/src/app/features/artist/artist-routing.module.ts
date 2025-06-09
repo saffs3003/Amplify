@@ -8,14 +8,17 @@ const routes: Routes = [
   {
     path: '',
     component: ArtistComponent,
+    data: { roles: ['Artist'] },
     children: [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        data: { roles: ['Artist'] },
       },
       {
         path: 'events',
         component: EventsComponent,
+        data: { roles: ['Artist'] },
       },
     ],
   },
